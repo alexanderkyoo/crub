@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crub"
+version = "0.1.0"
+description = "Crub CLI"
+requires-python = ">=3.10"
+dependencies = ["PyGithub>=2.0.0", "keyring>=24.0.0"]
+
+[project.scripts]
+crub = "crub.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
