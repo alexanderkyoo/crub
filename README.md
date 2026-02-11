@@ -1,5 +1,7 @@
 # crub
 
+[![PyPI version](https://badge.fury.io/py/crub.svg)](https://pypi.org/project/crub/)
+
 **crub** (Code Review User Experience) is a CLI tool that streamlines AI-assisted development with proper code review workflows. It enforces a PR-based review process for AI-generated code, ensuring changes go through proper review before merging.
 
 ## What It Does
