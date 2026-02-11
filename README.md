@@ -6,11 +6,12 @@
 
 crub manages the full lifecycle of AI-assisted feature development:
 
-1. **Create** a feature branch
-2. **Work** on it using AI coding tools (or manually)
-3. **Submit** changes as a GitHub PR
-4. **Review** and address PR feedback automatically with AI
-5. **Wrap up** by cleaning branches after merge
+1. **Instruct** the agent with project-specific guidance
+2. **Create** a feature branch
+3. **Work** on it using AI coding tools (or manually)
+4. **Submit** changes as a GitHub PR
+5. **Review** and address PR feedback automatically with AI
+6. **Wrap up** by cleaning branches after merge
 
 ## Why Use crub?
 
@@ -75,16 +76,19 @@ If `{instruction}` is omitted, crub appends the instruction as the last argument
 ### Basic Workflow
 
 ```bash
-# 1. Create a new feature branch
+# 1. Print project guidance for the agent
+crub instruct
+
+# 2. Create a new feature branch
 crub create auth-feature
 
-# 2. Do your work (use your AI tool directly, or work manually)
+# 3. Do your work (use your AI tool directly, or work manually)
 # Your AI tool makes changes, you review them locally
 
-# 3. Submit a PR when ready
+# 4. Submit a PR when ready
 crub submit
 
-# 4. Address review comments automatically
+# 5. Address review comments automatically
 crub review
 ```
 
@@ -93,6 +97,14 @@ crub review
 #### `crub`
 
 Shows the guided workflow help screen.
+
+#### `crub instruct`
+
+Prints `AGENT_GUIDE.md` from the current repository root.
+
+```bash
+crub instruct
+```
 
 #### `crub create <branch-name>`
 
