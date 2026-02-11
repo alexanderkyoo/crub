@@ -4,6 +4,7 @@ import subprocess
 from crub.workflows import (
     clear_auth_token,
     create_branch,
+    print_instructions,
     review_branch,
     revise_branch,
     status_branch,
@@ -79,6 +80,11 @@ def _build_parser() -> tuple[argparse.ArgumentParser, argparse.ArgumentParser]:
     )
     status_parser.add_argument("branch_name", nargs="?")
 
+    subparsers.add_parser(
+        "instruct",
+        help="Print AGENT_GUIDE.md for agent usage guidance",
+    )
+
     return parser, auth_parser
 
 
@@ -108,6 +114,8 @@ def main() -> int:
             wrap_branch(args.branch_name, args.pr_number)
         elif args.command == "status":
             status_branch(args.branch_name)
+        elif args.command == "instruct":
+            print_instructions()
     except (RuntimeError, subprocess.CalledProcessError) as exc:
         err = str(exc).strip() or type(exc).__name__
         print(f"Error: {err}")

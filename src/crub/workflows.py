@@ -4,6 +4,7 @@ import os
 import re
 import shlex
 import subprocess
+from pathlib import Path
 from typing import Optional
 
 import keyring
@@ -302,3 +303,10 @@ def status_branch(branch: Optional[str] = None) -> None:
             print(f"- #{pr.number} ({state}) {pr.html_url}")
     finally:
         g.close()
+
+
+def print_instructions() -> None:
+    guide_path = Path.cwd() / "AGENT_GUIDE.md"
+    if not guide_path.exists():
+        raise RuntimeError("AGENT_GUIDE.md not found in current directory.")
+    print(guide_path.read_text(encoding="utf-8"))
