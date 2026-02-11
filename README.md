@@ -102,7 +102,7 @@ Shows the guided workflow help screen.
 
 #### `crub instruct`
 
-Prints `AGENT_GUIDE.md` from the current repository root.
+Prints the `AGENT_GUIDE.md` bundled inside the installed `crub` package.
 
 ```bash
 crub instruct

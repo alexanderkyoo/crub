@@ -4,7 +4,7 @@ import os
 import re
 import shlex
 import subprocess
-from pathlib import Path
+from importlib import resources
 from typing import Optional
 
 import keyring
@@ -306,7 +306,10 @@ def status_branch(branch: Optional[str] = None) -> None:
 
 
 def print_instructions() -> None:
-    guide_path = Path.cwd() / "AGENT_GUIDE.md"
-    if not guide_path.exists():
-        raise RuntimeError("AGENT_GUIDE.md not found in current directory.")
-    print(guide_path.read_text(encoding="utf-8"))
+    try:
+        guide_text = resources.files("crub").joinpath("AGENT_GUIDE.md").read_text(
+            encoding="utf-8"
+        )
+    except FileNotFoundError as exc:
+        raise RuntimeError("Bundled AGENT_GUIDE.md is missing from this installation.") from exc
+    print(guide_text)

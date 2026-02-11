@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crub"
-version = "0.1.0"
+version = "0.1.1"
 description = "crub - CLI for AI-assisted development with PR workflows"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -35,3 +35,6 @@ Issues = "https://github.com/alexanderkyoo/crub/issues"
 
 [project.scripts]
 crub = "crub.cli:main"
+
+[tool.setuptools.package-data]
+crub = ["AGENT_GUIDE.md"]
